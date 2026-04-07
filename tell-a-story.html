@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Tell a Story &laquo; Our First Loves</title>
+<link rel="stylesheet" href="style.css" />
+<link rel="icon" href="favicon.ico" type="image/x-icon" />
+</head>
+<body>
+
+<div id="Wrapper">
+
+  <div id="MenuColumn">
+    <div id="Logo"><a href="index.html"><img src="images/logo.png" alt="Our First Loves" /></a></div>
+<div id="TopNav">
+      <a href="best-loves.html" class="MenuLink">BEST LOVES</a>
+      <a href="archive.html"    class="MenuLink">ARCHIVE</a>
+      <a href="about.html"      class="MenuLink">ABOUT US</a>
+    </div>
+</div>
+
+  <div id="ContentColumn">
+    <div id="HeadlineContainer">
+      <h1><span class="pagetitle">tell a story</span></h1>
+      <h3>share your first love with the world</h3>
+    </div>
+
+    <form id="survey" action="#" method="post">
+      <table cellpadding="0" cellspacing="0" border="0">
+
+        <tr><td colspan="2" style="border-bottom:1px dotted #ccc; padding:10px 5px 14px;">
+          <strong>We welcome readers to send in their stories of first love.</strong>
+          Please fill out the required fields marked with an asterisk (*).
+          An editor will review your story once submitted, but we cannot guarantee all submissions will be posted.
+        </td></tr>
+
+        <tr>
+          <td>What&#8217;s your first name?*</td>
+          <td><input type="text" id="firstname" name="firstname" /></td>
+        </tr>
+
+        <tr>
+          <td>What&#8217;s your e-mail address?*</td>
+          <td><input type="text" id="email" name="email" /></td>
+        </tr>
+
+        <tr>
+          <td>How old are you now?</td>
+          <td><input type="text" id="age" name="age" style="width:60px;" /></td>
+        </tr>
+
+        <tr>
+          <td>What is your gender?</td>
+          <td>
+            <input type="radio" name="gender" value="male" /> Male &nbsp;
+            <input type="radio" name="gender" value="female" /> Female &nbsp;
+            <input type="radio" name="gender" value="other" /> I identify as
+            <input type="text" id="othergender" name="othergender" style="width:80px;" />
+          </td>
+        </tr>
+
+        <tr>
+          <td>What was your first love?*</td>
+          <td><input type="text" id="firstlove" name="firstlove" style="width:220px;" /></td>
+        </tr>
+
+        <tr>
+          <td>How old were you when you first experienced this love?</td>
+          <td><input type="text" id="ageatfirst" name="ageatfirst" style="width:60px;" /></td>
+        </tr>
+
+        <tr>
+          <td>In what geographic location did this love occur?</td>
+          <td>
+            <input type="text" id="city" name="city" placeholder="City" />
+            <select id="state" name="state">
+              <option value="">(state)</option>
+              <option>Alabama</option><option>Alaska</option><option>Arizona</option>
+              <option>Arkansas</option><option>California</option><option>Colorado</option>
+              <option>Connecticut</option><option>Delaware</option><option>Florida</option>
+              <option>Georgia</option><option>Hawaii</option><option>Idaho</option>
+              <option>Illinois</option><option>Indiana</option><option>Iowa</option>
+              <option>Kansas</option><option>Kentucky</option><option>Louisiana</option>
+              <option>Maine</option><option>Maryland</option><option>Massachusetts</option>
+              <option>Michigan</option><option>Minnesota</option><option>Mississippi</option>
+              <option>Missouri</option><option>Montana</option><option>Nebraska</option>
+              <option>Nevada</option><option>New Hampshire</option><option>New Jersey</option>
+              <option>New Mexico</option><option>New York</option><option>North Carolina</option>
+              <option>North Dakota</option><option>Ohio</option><option>Oklahoma</option>
+              <option>Oregon</option><option>Pennsylvania</option><option>Rhode Island</option>
+              <option>South Carolina</option><option>South Dakota</option><option>Tennessee</option>
+              <option>Texas</option><option>Utah</option><option>Vermont</option>
+              <option>Virginia</option><option>Washington</option><option>West Virginia</option>
+              <option>Wisconsin</option><option>Wyoming</option>
+            </select>
+            <select id="country" name="country">
+              <option value="US" selected>United States</option>
+              <option value="CA">Canada</option>
+              <option value="GB">United Kingdom</option>
+              <option value="AU">Australia</option>
+              <option value="other">(other country)</option>
+            </select>
+            <br />
+            <label style="margin-top:6px; display:inline-block;">
+              <input type="radio" name="nolocation" value="noplace" /> No particular place
+            </label>
+          </td>
+        </tr>
+
+        <tr>
+          <td>In what type of place did your first love occur?</td>
+          <td>
+            <input type="text" id="descriptivelocation" name="descriptivelocation" style="width:220px;" />
+            <div class="FormInputCaption">e.g. the kitchen, at McDonald&#8217;s, etc.</div>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Describe your love in one word:</td>
+          <td><input type="text" id="adjective" name="adjective" style="width:120px;" /></td>
+        </tr>
+
+        <tr>
+          <td style="vertical-align:top; border-bottom:0;">Tell us your story.*</td>
+          <td style="border-bottom:0;">
+            <textarea id="narrative" name="narrative" rows="10" cols="40"></textarea>
+          </td>
+        </tr>
+
+      </table>
+
+      <div style="text-align:right; margin-top:10px;">
+        <button type="submit" id="FormSubmitBtn">submit &rarr;</button>
+      </div>
+    </form>
+
+  </div>
+
+  <div id="Sidebar">
+    <div id="AboutNav">
+      <a href="about.html"        class="MenuLink">ABOUT US</a>
+
+    </div>
+  </div>
+
+</div>
+
+<div class="footer-wrap">
+  <div id="footer">
+    <ul>
+      <li class="FirstFooterLink"><a href="index.html">Home</a></li>
+      <li><a href="best-loves.html">Best Loves</a></li>
+      <li><a href="archive.html">Archive</a></li>
+      <li><a href="about.html">About Us</a></li>
+
+      <li>&copy; Our First Loves 2009</li>
+    </ul>
+  </div>
+</div>
+
+</body>
+</html>

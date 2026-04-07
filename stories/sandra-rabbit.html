@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>my first love was my stuffed rabbit &laquo; Our First Loves</title>
+<link rel="stylesheet" href="../style.css" />
+<link rel="icon" href="../favicon.ico" type="image/x-icon" />
+</head>
+<body>
+
+<div id="Wrapper">
+
+  <div id="MenuColumn">
+    <div id="Logo"><a href="../index.html"><img src="../images/logo.png" alt="Our First Loves" /></a></div>
+<div id="TopNav">
+      <a href="../best-loves.html" class="MenuLink">BEST LOVES</a>
+      <a href="../archive.html"    class="MenuLink">ARCHIVE</a>
+      <a href="../about.html"      class="MenuLink">ABOUT US</a>
+    </div>
+</div>
+
+  <div id="ContentColumn">
+    <div id="HeadlineContainer">
+      <h1>my first love was my stuffed rabbit</h1>
+      <h3>Sandra, 28 / 2 at first love, Ohio</h3>
+    </div>
+    
+    <div class="audio-player">
+      <audio controls>
+        <source src="../audio/sandra-rabbit.mp3" type="audio/mpeg" />
+        Your browser does not support the audio element.
+      </audio>
+    </div>
+    <div id="TranscriptHeader">
+      <div id="TranscriptHeaderLabel">transcript</div>
+      <div id="TranscriptHeaderButton"><a href="#" id="TranscriptToggle">show &#9654;</a></div>
+    </div>
+    <div id="Transcript">
+      <p>"I still have him. He sits on my dresser." Sandra's stuffed rabbit was her constant companion from age two through childhood — she brought him to college and still keeps him.</p>
+    </div>
+
+    <div id="PostLinks" class="navigation">
+      <div class="PreviousPostLink"><a href="../archive.html">&laquo; Back to Archive</a></div>
+      <div class="NextPostLink"><a href="../best-loves.html">Best Loves &raquo;</a></div>
+    </div>
+  </div>
+
+  <div id="Sidebar">
+    <div id="StoryPhoto">
+      <img src='../images/uploads/2009/03/sandra-stuffed-rabbit-pola-150x150.jpg' alt='' />
+    </div>
+    <div id="StorytellerInfo">
+      <div class="AuthorInfo">AUTHOR INFO</div>
+      Sandra, 28 / 2 at first love, Ohio
+    </div>
+    <div id="RelatedStories">
+      <div class="MenuLink">RELATED STORIES</div>
+      <a href="../best-loves.html"><img src="../images/uploads/2009/03/couple-pola-150x150.jpg" width="60" height="60" class="RelatedImageLeft" alt="" /></a>
+      <a href="../archive.html"><img src="../images/uploads/2009/03/braves-cropped-pola-150x150.jpg" width="60" height="60" alt="" /></a>
+      <a href="../archive.html"><img src="../images/uploads/2009/03/collie2-cc-pola-150x150.jpg" width="60" height="60" class="RelatedImageLeft" alt="" /></a>
+      <a href="../archive.html"><img src="../images/uploads/2009/03/rachel-boy-next-door-pola-150x150.jpg" width="60" height="60" alt="" /></a>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer-wrap">
+  <div id="footer">
+    <ul>
+      <li class="FirstFooterLink"><a href="../index.html">Home</a></li>
+      <li><a href="../best-loves.html">Best Loves</a></li>
+      <li><a href="../archive.html">Archive</a></li>
+      <li><a href="../about.html">About Us</a></li>
+
+      <li>&copy; Our First Loves 2009</li>
+    </ul>
+  </div>
+</div>
+
+<script>
+var toggle = document.getElementById('TranscriptToggle');
+if (toggle) {
+  toggle.addEventListener('click', function(e) {
+    e.preventDefault();
+    var t = document.getElementById('Transcript');
+    if (t) {
+      t.classList.toggle('open');
+      this.textContent = t.classList.contains('open') ? 'hide ▼' : 'show ▶';
+    }
+  });
+}
+</script>
+
+</body>
+</html>

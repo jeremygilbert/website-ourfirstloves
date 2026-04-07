@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>my first love was bookman's alley &laquo; Our First Loves</title>
+<link rel="stylesheet" href="../style.css" />
+<link rel="icon" href="../favicon.ico" type="image/x-icon" />
+<style>
+#SlideshowContainer {
+  width: 570px;
+  background: #000;
+  position: relative;
+  margin: 16px 0;
+}
+#SlideshowImg {
+  width: 570px;
+  height: 376px;
+  object-fit: contain;
+  background: #000;
+  display: block;
+}
+#SlideshowControls {
+  background: #111;
+  padding: 6px 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+#SlideshowControls button {
+  background: #333;
+  color: #fff;
+  border: none;
+  padding: 4px 12px;
+  cursor: pointer;
+  font-size: 13px;
+  border-radius: 2px;
+}
+#SlideshowControls button:hover { background: #555; }
+#ProgressBar {
+  flex: 1;
+  height: 6px;
+  background: #444;
+  border-radius: 3px;
+  overflow: hidden;
+  cursor: pointer;
+}
+#ProgressFill {
+  height: 100%;
+  background: #c00;
+  width: 0%;
+  transition: width 0.1s;
+}
+#TimeDisplay { color: #aaa; font-size: 11px; min-width: 60px; text-align: right; }
+</style>
+</head>
+<body>
+
+<div id="Wrapper">
+
+  <div id="MenuColumn">
+    <div id="Logo"><a href="../index.html"><img src="../images/logo.png" alt="Our First Loves" /></a></div>
+<div id="TopNav">
+      <a href="../best-loves.html" class="MenuLink">BEST LOVES</a>
+      <a href="../archive.html"    class="MenuLink">ARCHIVE</a>
+      <a href="../about.html"      class="MenuLink">ABOUT US</a>
+    </div>
+</div>
+
+  <div id="ContentColumn">
+    <div id="HeadlineContainer">
+      <h1><span class="pagetitle">my first love was bookman's alley</span></h1>
+      <h3>Roger / Evanston, Illinois.</h3>
+    </div>
+
+    <div id="SlideshowContainer">
+      <img id="SlideshowImg" src="../soundslides/bookman/placeholder.jpg" alt="" />
+      <div id="SlideshowControls">
+        <button id="PlayBtn" onclick="togglePlay()">&#9654; Play</button>
+        <div id="ProgressBar" onclick="seekTo(event)"><div id="ProgressFill"></div></div>
+        <span id="TimeDisplay">0:00</span>
+      </div>
+    </div>
+
+    <audio id="StoryAudio" src="../soundslides/bookman/audio.mp3" preload="auto"></audio>
+
+    <div id="TranscriptHeader">
+      <p><em>"Every book has a story. Every story has a home."</em></p>
+    </div>
+
+  </div>
+
+  <div id="Sidebar">
+    <div id="StoryInfo">
+      <img src="../images/uploads/2009/03/bookmans-alley-pola-150x150.jpg" alt="" style="width:150px; height:150px; object-fit:cover;" />
+    </div>
+    <div id="AboutNav">
+      <a href="../about.html"           class="MenuLink">ABOUT US</a>
+
+    </div>
+  </div>
+
+</div>
+
+<div class="footer-wrap">
+  <div id="footer">
+    <ul>
+      <li class="FirstFooterLink"><a href="../index.html">Home</a></li>
+      <li><a href="../best-loves.html">Best Loves</a></li>
+      <li><a href="../archive.html">Archive</a></li>
+      <li><a href="../about.html">About Us</a></li>
+
+      <li>&copy; Our First Loves 2009</li>
+    </ul>
+  </div>
+</div>
+
+<script>
+var slides = [{"time": 0.0, "img": "img_1637.jpg"}, {"time": 2.848, "img": "roger_title.jpg"}, {"time": 4.416, "img": "img_1591.jpg"}, {"time": 8.544, "img": "img_1592.jpg"}, {"time": 11.392, "img": "img_1593.jpg"}, {"time": 14.24, "img": "img_1596.jpg"}, {"time": 17.12, "img": "img_1594.jpg"}, {"time": 19.968, "img": "img_1595.jpg"}, {"time": 22.816, "img": "img_1597.jpg"}, {"time": 30.144, "img": "img_1598.jpg"}, {"time": 35.424, "img": "img_1600.jpg"}, {"time": 39.936, "img": "img_1603.jpg"}, {"time": 44.768, "img": "img_1604.jpg"}, {"time": 50.208, "img": "img_1605.jpg"}, {"time": 56.16, "img": "img_1607.jpg"}, {"time": 59.936, "img": "img_1609.jpg"}, {"time": 65.408, "img": "img_1614.jpg"}, {"time": 70.912, "img": "img_1616.jpg"}, {"time": 76.16, "img": "img_1615.jpg"}, {"time": 82.24, "img": "img_1619.jpg"}, {"time": 86.88, "img": "img_1624.jpg"}, {"time": 91.648, "img": "img_1625.jpg"}, {"time": 96.16, "img": "img_1626.jpg"}, {"time": 100.48, "img": "img_1632.jpg"}, {"time": 104.864, "img": "img_1635.jpg"}, {"time": 109.12, "img": "img_1638.jpg"}, {"time": 113.248, "img": "img_1639.jpg"}];
+var audio = document.getElementById('StoryAudio');
+var img = document.getElementById('SlideshowImg');
+var fill = document.getElementById('ProgressFill');
+var timeDisp = document.getElementById('TimeDisplay');
+var playBtn = document.getElementById('PlayBtn');
+var playing = false;
+var raf = null;
+
+// Preload first image
+if (slides.length > 0) {
+  img.src = '../soundslides/bookman/' + slides[0].img;
+}
+
+function getSlideIndex(t) {
+  var idx = 0;
+  for (var i = 0; i < slides.length; i++) {
+    if (slides[i].time <= t) idx = i; else break;
+  }
+  return idx;
+}
+
+function fmt(s) {
+  var m = Math.floor(s/60);
+  var sec = Math.floor(s % 60);
+  return m + ':' + (sec < 10 ? '0' : '') + sec;
+}
+
+function update() {
+  if (!playing) return;
+  var t = audio.currentTime;
+  var dur = audio.duration || 1;
+  var idx = getSlideIndex(t);
+  var newSrc = '../soundslides/bookman/' + slides[idx].img;
+  if (img.src.indexOf(slides[idx].img) < 0) img.src = newSrc;
+  fill.style.width = (t / dur * 100) + '%';
+  timeDisp.textContent = fmt(t) + ' / ' + fmt(dur);
+  raf = requestAnimationFrame(update);
+}
+
+function togglePlay() {
+  if (playing) {
+    audio.pause();
+    playing = false;
+    playBtn.textContent = '\u25b6 Play';
+    cancelAnimationFrame(raf);
+  } else {
+    audio.play();
+    playing = true;
+    playBtn.textContent = '\u23f8 Pause';
+    raf = requestAnimationFrame(update);
+  }
+}
+
+function seekTo(e) {
+  var bar = document.getElementById('ProgressBar');
+  var rect = bar.getBoundingClientRect();
+  var ratio = (e.clientX - rect.left) / rect.width;
+  audio.currentTime = ratio * (audio.duration || 0);
+  if (!playing) {
+    var t = audio.currentTime;
+    var idx = getSlideIndex(t);
+    img.src = '../soundslides/bookman/' + slides[idx].img;
+    fill.style.width = (ratio * 100) + '%';
+  }
+}
+
+audio.addEventListener('ended', function() {
+  playing = false;
+  playBtn.textContent = '\u25b6 Play';
+  cancelAnimationFrame(raf);
+  fill.style.width = '100%';
+});
+</script>
+
+</body>
+</html>

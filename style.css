@@ -1,0 +1,280 @@
+/* Our First Loves — Static Site Stylesheet
+   Original theme by Michael Heilemann / binarybonsai.com
+   Converted to static HTML, 2026
+*/
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  color: #666;
+  line-height: 20px;
+  font-size: 14px;
+  background: #fff;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3 { margin: 0; padding: 0; }
+h1 { font-family: Arial, Tahoma, Helvetica, sans-serif; font-size: 20px; color: black; font-weight: normal; padding-bottom: 4px; }
+h2 { font-family: Arial, Tahoma, Helvetica, sans-serif; font-size: 20px; color: black; font-weight: normal; }
+h3 { font-family: Arial, Tahoma, Helvetica, sans-serif; font-size: 16px; font-weight: normal; line-height: 20px; color: black; }
+h3 a { color: black; font-weight: normal; }
+
+a { font-weight: bold; text-decoration: none; color: #666; border: none; }
+a:hover { color: black; }
+
+/* ===== LAYOUT ===== */
+#Wrapper { margin: 44px auto 0 auto; width: 1000px; overflow: hidden; }
+
+#MenuColumn { width: 130px; float: left; padding: 0 20px 0 0; }
+#Logo { text-align: right; }
+#Logo img { border: 0; }
+
+#SearchContainer { padding: 20px 0; text-align: right; }
+#SearchContainer form { margin: 0; }
+#search {
+  padding: 2px; font-family: Georgia, 'Times New Roman', Times, serif;
+  color: #666; line-height: 20px; font-size: 14px; width: 90px;
+  border: 1px solid #ccc;
+}
+
+#TopNav { padding: 20px 0; text-align: right; }
+#BottomNav { padding: 20px 0; text-align: right; }
+
+.MenuLink {
+  font-family: Arial, Tahoma, Helvetica, sans-serif; font-size: 14px;
+  font-weight: normal; color: #666; display: block; line-height: 24px;
+}
+.MenuLink:hover { color: #000; }
+.MenuLink_active { color: #000 !important; }
+
+/* ===== CONTENT COLUMN ===== */
+#ContentColumn {
+  width: 620px; float: left; padding: 20px;
+  border-left: 1px solid #ccc; min-height: 400px;
+}
+
+#HeadlineContainer { border-bottom: 1px solid #ccc; padding-bottom: 14px; padding-top: 50px; }
+#HeadlineContainer h3, .VotingLabels {
+  font-family: Arial, Tahoma, Helvetica, sans-serif; font-size: 11px;
+  color: #333; line-height: 12px; margin-top: 2px; margin-bottom: 7px; text-transform: uppercase;
+}
+
+#MainContent { margin-top: 21px; }
+#MainContent p { margin: 0 0 13px 0; }
+.pagetitle { text-transform: lowercase; }
+
+/* ===== LISTING PAGES ===== */
+#ListingResultBox { margin-top: 20px; }
+.ListingBigBox { margin-bottom: 20px; float: left; clear: both; width: 580px; }
+.ListingPhoto { float: left; width: 60px; height: 60px; border: none; overflow: hidden; }
+.ListingPhoto img { border: none; width: 60px; height: 60px; object-fit: cover; }
+.ListingText { float: left; width: 505px; margin-left: 10px; }
+.ListingText p { margin: 0; }
+.ListingHeadline h3 { font-weight: bold; }
+
+.navigation {
+  font-family: Arial, Helvetica, sans-serif; font-size: 11px; text-transform: uppercase;
+  color: #333; margin: 20px 0; float: left; clear: both; width: 580px;
+}
+.navigation a { color: #333; }
+.navigation a:hover { color: black; }
+
+.alignleft { float: left; width: 200px; }
+.alignmiddle { float: left; width: 200px; text-align: center; color: #666; }
+.alignright { float: left; width: 180px; text-align: right; }
+
+/* ===== SINGLE STORY PAGE ===== */
+#Sidebar { width: 150px; float: left; margin: 20px; padding-top: 65px; }
+#StoryPhoto img { width: 150px; border: none; }
+
+#StorytellerInfo {
+  padding: 10px 0 20px 0; font-family: Georgia, 'Times New Roman', Times, serif;
+  color: #666; font-size: 12px; line-height: 14px;
+}
+.AuthorInfo {
+  padding: 7px 0; font-family: Arial, Helvetica, sans-serif; color: #666; font-size: 14px;
+}
+
+#RelatedStories {
+  border: 1px solid #ccc; padding: 0 0 9px 0; text-align: center;
+  font-size: 14px; width: 148px; float: left;
+}
+#RelatedStories img { padding-left: 6px; padding-bottom: 7px; border: none; }
+#RelatedStories .RelatedImageLeft { padding-left: 0; }
+#RelatedStories .MenuLink { padding: 10px 0 10px 10px; text-align: left; }
+
+#AboutNav {
+  padding: 9px 0; text-align: left; border: 1px solid #ccc;
+  width: 150px; border-bottom: none;
+}
+#AboutNav .MenuLink { padding: 6px 0 6px 10px; }
+
+/* ===== MULTIMEDIA: HTML5 AUDIO ===== */
+.audio-player { margin-top: 21px; margin-bottom: 10px; }
+.audio-player audio { width: 580px; height: 36px; display: block; }
+
+/* ===== TRANSCRIPT ===== */
+#TranscriptHeader {
+  border: 1px solid #ccc; float: left; margin: 20px 0 0 0;
+  padding: 5px; width: 580px;
+}
+#TranscriptHeaderLabel {
+  width: 490px; float: left;
+  font-family: Arial, Helvetica, sans-serif; font-size: 11px; text-transform: uppercase;
+}
+#TranscriptHeaderButton {
+  font-family: Arial, Tahoma, Helvetica, sans-serif; font-size: 11px;
+  color: #666; text-transform: uppercase; width: 78px; float: left; text-align: right;
+}
+#TranscriptHeaderButton a { color: #666; font-weight: normal; cursor: pointer; }
+#Transcript {
+  border: 1px solid #ccc; clear: both; padding: 10px; border-top: none; display: none;
+}
+#Transcript.open { display: block; }
+
+/* ===== VOTING ===== */
+#Voting {
+  border-top: 1px solid #ccc; font-family: arial; font-size: 12px;
+  margin-top: 20px; float: left; clear: both; width: 580px;
+}
+#Voting a { font-weight: normal; color: #333; }
+.VotingHeader { margin-top: 20px; float: left; width: 580px; margin-bottom: 10px; }
+
+#PostLinks {
+  float: left; margin-top: 20px; border-top: 1px solid #ccc;
+  padding-top: 20px; width: 580px; clear: both;
+}
+.PreviousPostLink { float: left; width: 290px; }
+.NextPostLink { float: left; width: 290px; text-align: right; }
+
+/* ===== STAFF ===== */
+#StaffPhotos { float: left; margin-top: 10px; width: 580px; }
+.StaffBox { width: 580px; float: left; margin-bottom: 40px; clear: both; }
+.StaffBioBoxFirst { width: 180px; float: left; margin-left: 0; }
+.StaffBioBox { width: 180px; float: left; margin-left: 20px; }
+.StaffPic { width: 180px; border: 0; margin-bottom: 5px; display: block; }
+.StaffBio { width: 180px; float: left; font-size: 12px; line-height: 18px; }
+.StaffBio strong {
+  display: block; font-family: Arial, Helvetica, sans-serif; color: #666;
+  font-size: 11px; text-transform: uppercase; padding-bottom: 5px; margin-bottom: 5px;
+  border-bottom: 1px solid #ccc; font-weight: normal;
+}
+#FromProfessors { border-top: 1px solid #ccc; margin-top: 20px; padding-top: 15px; clear: both; float: left; width: 580px; }
+
+/* ===== TELL A STORY FORM ===== */
+#survey {
+  font-family: Arial, Tahoma, Helvetica, sans-serif; font-size: 13px;
+  color: #666; margin-top: 20px;
+}
+#survey table { border-collapse: collapse; width: 100%; }
+#survey tr td { border-bottom: 1px dotted #ccc; padding: 8px 5px; vertical-align: middle; }
+#survey td:first-child { width: 220px; vertical-align: top; padding-top: 12px; }
+#survey input[type="text"], #survey textarea, #survey select {
+  font-size: 13px; color: #666; padding: 3px;
+  font-family: Arial, Helvetica, sans-serif; border: 1px solid #ccc;
+}
+#survey input[type="radio"] { margin-right: 4px; }
+textarea { margin-bottom: 10px; padding: 5px; font-size: 14px; color: #666; font-family: arial; }
+#city { width: 100px; }
+#country { width: 200px; }
+#state { width: 150px; }
+.FormInputCaption { font-size: 11px; color: #999; margin-top: 3px; }
+#FormSubmitBtn {
+  display: block; margin: 20px 0 20px auto; cursor: pointer;
+  font-family: Arial, sans-serif; font-size: 13px; color: #666;
+  padding: 6px 20px; border: 1px solid #ccc; background: #f9f9f9;
+}
+#FormSubmitBtn:hover { color: #000; border-color: #999; background: #f0f0f0; }
+
+/* ===== FOOTER ===== */
+.footer-wrap { margin: 0 auto; width: 1000px; overflow: hidden; }
+#footer {
+  font-family: Arial, Tahoma, Helvetica, sans-serif; font-size: 11px; color: #666;
+  float: left; clear: both; border-top: 1px solid #ccc;
+  width: 950px; text-align: center; margin-top: 20px; padding: 10px 0 20px 0;
+}
+#footer ul { list-style: none; margin: 0; padding: 0; }
+#footer .FirstFooterLink { border-left: 0; }
+#footer ul li { border-left: 1px solid #666; display: inline; padding: 0 5px 0 9px; }
+#footer ul li a { color: #666; font-weight: normal; text-decoration: underline; }
+#footer ul li a:hover { color: #000; }
+
+/* ===== HOMEPAGE POLAROID GALLERY ===== */
+#PolaroidGallery { float: left; padding: 10px 0 10px 20px; }
+
+.polaroid-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 170px);
+  gap: 14px;
+  padding: 10px;
+}
+
+.polaroid {
+  background: #fff;
+  padding: 8px 8px 28px 8px;
+  box-shadow: 2px 3px 8px rgba(0,0,0,0.22);
+  width: 166px;
+  display: block;
+  text-decoration: none;
+  opacity: 0;
+  animation: polaroidFadeIn 0.45s ease-out forwards;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+  position: relative;
+}
+
+.polaroid img {
+  width: 150px; height: 150px; object-fit: cover; display: block; border: none;
+}
+
+/* Cursive handwriting label — reveals left-to-right on hover */
+.polaroid-label {
+  font-family: 'Caveat', cursive;
+  font-size: 16px;
+  font-weight: 500;
+  color: #1a1a1a;
+  position: absolute;
+  bottom: 5px;
+  left: 10px;
+  right: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+  line-height: 1;
+}
+
+.polaroid:hover .polaroid-label {
+  clip-path: inset(0 0% 0 0);
+}
+
+/* Per-item rotations and staggered delays */
+.polaroid:nth-child(1)  { transform: rotate(-2.1deg); animation-delay: 0.00s; }
+.polaroid:nth-child(2)  { transform: rotate( 1.4deg); animation-delay: 0.07s; }
+.polaroid:nth-child(3)  { transform: rotate(-0.8deg); animation-delay: 0.14s; }
+.polaroid:nth-child(4)  { transform: rotate( 2.3deg); animation-delay: 0.21s; }
+.polaroid:nth-child(5)  { transform: rotate( 1.1deg); animation-delay: 0.28s; }
+.polaroid:nth-child(6)  { transform: rotate(-1.7deg); animation-delay: 0.35s; }
+.polaroid:nth-child(7)  { transform: rotate( 0.6deg); animation-delay: 0.42s; }
+.polaroid:nth-child(8)  { transform: rotate(-2.4deg); animation-delay: 0.49s; }
+.polaroid:nth-child(9)  { transform: rotate( 1.8deg); animation-delay: 0.56s; }
+.polaroid:nth-child(10) { transform: rotate(-1.2deg); animation-delay: 0.63s; }
+.polaroid:nth-child(11) { transform: rotate( 2.0deg); animation-delay: 0.70s; }
+.polaroid:nth-child(12) { transform: rotate(-0.5deg); animation-delay: 0.77s; }
+.polaroid:nth-child(13) { transform: rotate( 1.6deg); animation-delay: 0.84s; }
+.polaroid:nth-child(14) { transform: rotate(-2.2deg); animation-delay: 0.91s; }
+.polaroid:nth-child(15) { transform: rotate( 0.9deg); animation-delay: 0.98s; }
+.polaroid:nth-child(16) { transform: rotate(-1.5deg); animation-delay: 1.05s; }
+
+.polaroid:hover {
+  transform: rotate(0deg) scale(1.05) !important;
+  box-shadow: 4px 6px 14px rgba(0,0,0,0.32);
+  z-index: 10; position: relative;
+}
+
+@keyframes polaroidFadeIn {
+  from { opacity: 0; transform: translateY(14px) scale(0.93); }
+  to   { opacity: 1; }
+}

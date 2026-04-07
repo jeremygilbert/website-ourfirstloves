@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>my first love was chewbacca &laquo; Our First Loves</title>
+<link rel="stylesheet" href="../style.css" />
+<link rel="icon" href="../favicon.ico" type="image/x-icon" />
+<style>
+#SlideshowContainer {
+  width: 570px;
+  background: #000;
+  position: relative;
+  margin: 16px 0;
+}
+#SlideshowImg {
+  width: 570px;
+  height: 376px;
+  object-fit: contain;
+  background: #000;
+  display: block;
+}
+#SlideshowControls {
+  background: #111;
+  padding: 6px 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+#SlideshowControls button {
+  background: #333;
+  color: #fff;
+  border: none;
+  padding: 4px 12px;
+  cursor: pointer;
+  font-size: 13px;
+  border-radius: 2px;
+}
+#SlideshowControls button:hover { background: #555; }
+#ProgressBar {
+  flex: 1;
+  height: 6px;
+  background: #444;
+  border-radius: 3px;
+  overflow: hidden;
+  cursor: pointer;
+}
+#ProgressFill {
+  height: 100%;
+  background: #c00;
+  width: 0%;
+  transition: width 0.1s;
+}
+#TimeDisplay { color: #aaa; font-size: 11px; min-width: 60px; text-align: right; }
+</style>
+</head>
+<body>
+
+<div id="Wrapper">
+
+  <div id="MenuColumn">
+    <div id="Logo"><a href="../index.html"><img src="../images/logo.png" alt="Our First Loves" /></a></div>
+<div id="TopNav">
+      <a href="../best-loves.html" class="MenuLink">BEST LOVES</a>
+      <a href="../archive.html"    class="MenuLink">ARCHIVE</a>
+      <a href="../about.html"      class="MenuLink">ABOUT US</a>
+    </div>
+</div>
+
+  <div id="ContentColumn">
+    <div id="HeadlineContainer">
+      <h1><span class="pagetitle">my first love was chewbacca</span></h1>
+      <h3>Tara / childhood at first love.</h3>
+    </div>
+
+    <div id="SlideshowContainer">
+      <img id="SlideshowImg" src="../soundslides/tara/placeholder.jpg" alt="" />
+      <div id="SlideshowControls">
+        <button id="PlayBtn" onclick="togglePlay()">&#9654; Play</button>
+        <div id="ProgressBar" onclick="seekTo(event)"><div id="ProgressFill"></div></div>
+        <span id="TimeDisplay">0:00</span>
+      </div>
+    </div>
+
+    <audio id="StoryAudio" src="../soundslides/tara/audio.mp3" preload="auto"></audio>
+
+    <div id="TranscriptHeader">
+      <p><em>"The greatest love story ever told."</em></p>
+    </div>
+
+  </div>
+
+  <div id="Sidebar">
+    <div id="StoryInfo">
+      <img src="../images/uploads/2009/03/wookie_love-pola-150x150.jpg" alt="" style="width:150px; height:150px; object-fit:cover;" />
+    </div>
+    <div id="AboutNav">
+      <a href="../about.html"           class="MenuLink">ABOUT US</a>
+
+    </div>
+  </div>
+
+</div>
+
+<div class="footer-wrap">
+  <div id="footer">
+    <ul>
+      <li class="FirstFooterLink"><a href="../index.html">Home</a></li>
+      <li><a href="../best-loves.html">Best Loves</a></li>
+      <li><a href="../archive.html">Archive</a></li>
+      <li><a href="../about.html">About Us</a></li>
+
+      <li>&copy; Our First Loves 2009</li>
+    </ul>
+  </div>
+</div>
+
+<script>
+var slides = [{"time": 0.0, "img": "slide1.jpg"}, {"time": 7.476, "img": "slide_2.jpg"}, {"time": 10.77, "img": "chris.jpg"}, {"time": 13.538, "img": "chris2.jpg"}, {"time": 29.072, "img": "slide3.jpg"}, {"time": 35.801, "img": "saveit.jpg"}, {"time": 39.009, "img": "just_chewie.jpg"}, {"time": 41.73, "img": "both.jpg"}, {"time": 48.486, "img": "space_pod.jpg"}, {"time": 58.644, "img": "church06_k_wars_e.jpg"}, {"time": 61.739, "img": "slide_6.jpg"}, {"time": 73.964, "img": "slide_4.jpg"}, {"time": 77.796, "img": "noframe.jpg"}, {"time": 81.998, "img": "slide_5.jpg"}, {"time": 86.766, "img": "pumpkin.jpg"}];
+var audio = document.getElementById('StoryAudio');
+var img = document.getElementById('SlideshowImg');
+var fill = document.getElementById('ProgressFill');
+var timeDisp = document.getElementById('TimeDisplay');
+var playBtn = document.getElementById('PlayBtn');
+var playing = false;
+var raf = null;
+
+// Preload first image
+if (slides.length > 0) {
+  img.src = '../soundslides/tara/' + slides[0].img;
+}
+
+function getSlideIndex(t) {
+  var idx = 0;
+  for (var i = 0; i < slides.length; i++) {
+    if (slides[i].time <= t) idx = i; else break;
+  }
+  return idx;
+}
+
+function fmt(s) {
+  var m = Math.floor(s/60);
+  var sec = Math.floor(s % 60);
+  return m + ':' + (sec < 10 ? '0' : '') + sec;
+}
+
+function update() {
+  if (!playing) return;
+  var t = audio.currentTime;
+  var dur = audio.duration || 1;
+  var idx = getSlideIndex(t);
+  var newSrc = '../soundslides/tara/' + slides[idx].img;
+  if (img.src.indexOf(slides[idx].img) < 0) img.src = newSrc;
+  fill.style.width = (t / dur * 100) + '%';
+  timeDisp.textContent = fmt(t) + ' / ' + fmt(dur);
+  raf = requestAnimationFrame(update);
+}
+
+function togglePlay() {
+  if (playing) {
+    audio.pause();
+    playing = false;
+    playBtn.textContent = '\u25b6 Play';
+    cancelAnimationFrame(raf);
+  } else {
+    audio.play();
+    playing = true;
+    playBtn.textContent = '\u23f8 Pause';
+    raf = requestAnimationFrame(update);
+  }
+}
+
+function seekTo(e) {
+  var bar = document.getElementById('ProgressBar');
+  var rect = bar.getBoundingClientRect();
+  var ratio = (e.clientX - rect.left) / rect.width;
+  audio.currentTime = ratio * (audio.duration || 0);
+  if (!playing) {
+    var t = audio.currentTime;
+    var idx = getSlideIndex(t);
+    img.src = '../soundslides/tara/' + slides[idx].img;
+    fill.style.width = (ratio * 100) + '%';
+  }
+}
+
+audio.addEventListener('ended', function() {
+  playing = false;
+  playBtn.textContent = '\u25b6 Play';
+  cancelAnimationFrame(raf);
+  fill.style.width = '100%';
+});
+</script>
+
+</body>
+</html>

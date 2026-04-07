@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>my first love was the beatles &laquo; Our First Loves</title>
+<link rel="stylesheet" href="../style.css" />
+<link rel="icon" href="../favicon.ico" type="image/x-icon" />
+<style>
+#SlideshowContainer {
+  width: 570px;
+  background: #000;
+  position: relative;
+  margin: 16px 0;
+}
+#SlideshowImg {
+  width: 570px;
+  height: 376px;
+  object-fit: contain;
+  background: #000;
+  display: block;
+}
+#SlideshowControls {
+  background: #111;
+  padding: 6px 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+#SlideshowControls button {
+  background: #333;
+  color: #fff;
+  border: none;
+  padding: 4px 12px;
+  cursor: pointer;
+  font-size: 13px;
+  border-radius: 2px;
+}
+#SlideshowControls button:hover { background: #555; }
+#ProgressBar {
+  flex: 1;
+  height: 6px;
+  background: #444;
+  border-radius: 3px;
+  overflow: hidden;
+  cursor: pointer;
+}
+#ProgressFill {
+  height: 100%;
+  background: #c00;
+  width: 0%;
+  transition: width 0.1s;
+}
+#TimeDisplay { color: #aaa; font-size: 11px; min-width: 60px; text-align: right; }
+</style>
+</head>
+<body>
+
+<div id="Wrapper">
+
+  <div id="MenuColumn">
+    <div id="Logo"><a href="../index.html"><img src="../images/logo.png" alt="Our First Loves" /></a></div>
+<div id="TopNav">
+      <a href="../best-loves.html" class="MenuLink">BEST LOVES</a>
+      <a href="../archive.html"    class="MenuLink">ARCHIVE</a>
+      <a href="../about.html"      class="MenuLink">ABOUT US</a>
+    </div>
+</div>
+
+  <div id="ContentColumn">
+    <div id="HeadlineContainer">
+      <h1><span class="pagetitle">my first love was the beatles</span></h1>
+      <h3>Lia / childhood at first love.</h3>
+    </div>
+
+    <div id="SlideshowContainer">
+      <img id="SlideshowImg" src="../soundslides/lia/placeholder.jpg" alt="" />
+      <div id="SlideshowControls">
+        <button id="PlayBtn" onclick="togglePlay()">&#9654; Play</button>
+        <div id="ProgressBar" onclick="seekTo(event)"><div id="ProgressFill"></div></div>
+        <span id="TimeDisplay">0:00</span>
+      </div>
+    </div>
+
+    <audio id="StoryAudio" src="../soundslides/lia/audio.mp3" preload="auto"></audio>
+
+    <div id="TranscriptHeader">
+      <p><em>"I heard them and everything changed."</em></p>
+    </div>
+
+  </div>
+
+  <div id="Sidebar">
+    <div id="StoryInfo">
+      <img src="../images/uploads/2009/03/lia_beatles_image-pola-150x150.jpg" alt="" style="width:150px; height:150px; object-fit:cover;" />
+    </div>
+    <div id="AboutNav">
+      <a href="../about.html"           class="MenuLink">ABOUT US</a>
+
+    </div>
+  </div>
+
+</div>
+
+<div class="footer-wrap">
+  <div id="footer">
+    <ul>
+      <li class="FirstFooterLink"><a href="../index.html">Home</a></li>
+      <li><a href="../best-loves.html">Best Loves</a></li>
+      <li><a href="../archive.html">Archive</a></li>
+      <li><a href="../about.html">About Us</a></li>
+
+      <li>&copy; Our First Loves 2009</li>
+    </ul>
+  </div>
+</div>
+
+<script>
+var slides = [{"time": 0.0, "img": "001.jpg"}, {"time": 0.362, "img": "002.jpg"}, {"time": 0.727, "img": "003.jpg"}, {"time": 1.092, "img": "004.jpg"}, {"time": 1.457, "img": "005.jpg"}, {"time": 1.718, "img": "006.jpg"}, {"time": 2.025, "img": "007.jpg"}, {"time": 2.332, "img": "008.jpg"}, {"time": 2.915, "img": "009.jpg"}, {"time": 3.339, "img": "010.jpg"}, {"time": 3.704, "img": "011.jpg"}, {"time": 4.192, "img": "012.jpg"}, {"time": 4.741, "img": "013.jpg"}, {"time": 6.089, "img": "014.jpg"}, {"time": 6.512, "img": "015.jpg"}, {"time": 6.939, "img": "016.jpg"}, {"time": 7.304, "img": "017.jpg"}, {"time": 7.672, "img": "018.jpg"}, {"time": 8.04, "img": "019.jpg"}, {"time": 8.347, "img": "020.jpg"}, {"time": 8.654, "img": "021.jpg"}, {"time": 9.066, "img": "022.jpg"}, {"time": 9.554, "img": "023.jpg"}, {"time": 10.373, "img": "024.jpg"}, {"time": 11.324, "img": "025.jpg"}, {"time": 11.997, "img": "026.jpg"}, {"time": 12.546, "img": "027.jpg"}, {"time": 15.363, "img": "028.jpg"}, {"time": 15.667, "img": "029.jpg"}, {"time": 15.959, "img": "030.jpg"}, {"time": 16.336, "img": "031.jpg"}, {"time": 16.701, "img": "032.jpg"}, {"time": 17.067, "img": "033.jpg"}, {"time": 17.37, "img": "034.jpg"}, {"time": 17.855, "img": "035.jpg"}, {"time": 18.23, "img": "036.jpg"}, {"time": 18.537, "img": "037.jpg"}, {"time": 18.966, "img": "038.jpg"}, {"time": 19.396, "img": "039.jpg"}, {"time": 20.133, "img": "040.jpg"}, {"time": 21.053, "img": "041.jpg"}, {"time": 22.158, "img": "042.jpg"}, {"time": 22.588, "img": "043.jpg"}, {"time": 22.895, "img": "044.jpg"}, {"time": 23.202, "img": "045.jpg"}, {"time": 23.585, "img": "046.jpg"}, {"time": 24.061, "img": "047.jpg"}, {"time": 24.368, "img": "048.jpg"}, {"time": 24.739, "img": "049.jpg"}, {"time": 25.043, "img": "050.jpg"}, {"time": 25.35, "img": "051.jpg"}, {"time": 25.712, "img": "052.jpg"}, {"time": 26.074, "img": "053.jpg"}, {"time": 26.562, "img": "054.jpg"}, {"time": 26.928, "img": "055.jpg"}, {"time": 27.56, "img": "056.jpg"}, {"time": 28.085, "img": "057.jpg"}, {"time": 28.695, "img": "058.jpg"}, {"time": 30.874, "img": "059.jpg"}, {"time": 31.304, "img": "060.jpg"}, {"time": 31.817, "img": "061.jpg"}, {"time": 32.163, "img": "062.jpg"}, {"time": 32.605, "img": "063.jpg"}, {"time": 32.909, "img": "064.jpg"}, {"time": 33.268, "img": "065.jpg"}, {"time": 33.575, "img": "066.jpg"}, {"time": 33.882, "img": "067.jpg"}, {"time": 35.656, "img": "068.jpg"}, {"time": 36.758, "img": "069.jpg"}, {"time": 38.412, "img": "070.jpg"}, {"time": 41.187, "img": "071.jpg"}, {"time": 41.493, "img": "072.jpg"}, {"time": 42.23, "img": "073.jpg"}, {"time": 42.816, "img": "074.jpg"}, {"time": 43.642, "img": "075.jpg"}, {"time": 44.342, "img": "076.jpg"}, {"time": 44.952, "img": "077.jpg"}, {"time": 45.809, "img": "078.jpg"}, {"time": 46.297, "img": "079.jpg"}, {"time": 46.904, "img": "080.jpg"}, {"time": 48.252, "img": "081.jpg"}, {"time": 49.292, "img": "082.jpg"}, {"time": 51.376, "img": "083.jpg"}, {"time": 53.702, "img": "084.jpg"}, {"time": 55.418, "img": "085.jpg"}, {"time": 57.072, "img": "086.jpg"}, {"time": 57.33, "img": "087.jpg"}, {"time": 57.637, "img": "088.jpg"}, {"time": 57.944, "img": "089.jpg"}, {"time": 58.284, "img": "090.jpg"}, {"time": 60.153, "img": "091.jpg"}, {"time": 60.979, "img": "092.jpg"}, {"time": 61.403, "img": "093.jpg"}, {"time": 61.811, "img": "094.jpg"}, {"time": 62.179, "img": "095.jpg"}, {"time": 62.609, "img": "096.jpg"}, {"time": 63.038, "img": "097.jpg"}, {"time": 63.72, "img": "098.jpg"}, {"time": 64.266, "img": "099.jpg"}, {"time": 64.815, "img": "100.jpg"}, {"time": 65.979, "img": "101.jpg"}, {"time": 66.896, "img": "102.jpg"}, {"time": 67.565, "img": "103.jpg"}, {"time": 68.483, "img": "104.jpg"}, {"time": 69.401, "img": "105.jpg"}, {"time": 70.502, "img": "106.jpg"}, {"time": 71.174, "img": "107.jpg"}, {"time": 71.659, "img": "108.jpg"}, {"time": 72.516, "img": "109.jpg"}, {"time": 73.188, "img": "110.jpg"}, {"time": 73.737, "img": "111.jpg"}, {"time": 75.069, "img": "112.jpg"}, {"time": 75.928, "img": "113.jpg"}, {"time": 76.235, "img": "114.jpg"}, {"time": 76.604, "img": "115.jpg"}];
+var audio = document.getElementById('StoryAudio');
+var img = document.getElementById('SlideshowImg');
+var fill = document.getElementById('ProgressFill');
+var timeDisp = document.getElementById('TimeDisplay');
+var playBtn = document.getElementById('PlayBtn');
+var playing = false;
+var raf = null;
+
+// Preload first image
+if (slides.length > 0) {
+  img.src = '../soundslides/lia/' + slides[0].img;
+}
+
+function getSlideIndex(t) {
+  var idx = 0;
+  for (var i = 0; i < slides.length; i++) {
+    if (slides[i].time <= t) idx = i; else break;
+  }
+  return idx;
+}
+
+function fmt(s) {
+  var m = Math.floor(s/60);
+  var sec = Math.floor(s % 60);
+  return m + ':' + (sec < 10 ? '0' : '') + sec;
+}
+
+function update() {
+  if (!playing) return;
+  var t = audio.currentTime;
+  var dur = audio.duration || 1;
+  var idx = getSlideIndex(t);
+  var newSrc = '../soundslides/lia/' + slides[idx].img;
+  if (img.src.indexOf(slides[idx].img) < 0) img.src = newSrc;
+  fill.style.width = (t / dur * 100) + '%';
+  timeDisp.textContent = fmt(t) + ' / ' + fmt(dur);
+  raf = requestAnimationFrame(update);
+}
+
+function togglePlay() {
+  if (playing) {
+    audio.pause();
+    playing = false;
+    playBtn.textContent = '\u25b6 Play';
+    cancelAnimationFrame(raf);
+  } else {
+    audio.play();
+    playing = true;
+    playBtn.textContent = '\u23f8 Pause';
+    raf = requestAnimationFrame(update);
+  }
+}
+
+function seekTo(e) {
+  var bar = document.getElementById('ProgressBar');
+  var rect = bar.getBoundingClientRect();
+  var ratio = (e.clientX - rect.left) / rect.width;
+  audio.currentTime = ratio * (audio.duration || 0);
+  if (!playing) {
+    var t = audio.currentTime;
+    var idx = getSlideIndex(t);
+    img.src = '../soundslides/lia/' + slides[idx].img;
+    fill.style.width = (ratio * 100) + '%';
+  }
+}
+
+audio.addEventListener('ended', function() {
+  playing = false;
+  playBtn.textContent = '\u25b6 Play';
+  cancelAnimationFrame(raf);
+  fill.style.width = '100%';
+});
+</script>
+
+</body>
+</html>
